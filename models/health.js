@@ -28,27 +28,37 @@
 // o Chronic Conditions, Disabilities, etc. 
 // • Smoking/Alcohol/Drug Use 
 // • Physical Activity Level
-
 const pool = require('../config/db');
 
 const Health = {
     async create(data) {
         const query = `
       INSERT INTO health_info (
-        user_id, personal_info, contact_info, socioeco_data, cultural_info,
-        health_status, heart_rate, blood_pressure, respiratory_rate,
-        body_temp, oxygen_level, weight, height, electrocardiogram,
-        glucose_level, urine_analysis
-      ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16)
+        user_id, full_name, dob_age, gender, marital_status, address, phone_number, email_address,
+        employment_status, occupation, education_level, race_ethnicity, nationality, primary_language,
+        health_status, smoking_alcohol_drug_use, physical_activity_level, heart_rate, blood_pressure,
+        respiratory_rate, body_temp, oxygen_level, weight, height, electrocardiogram, glucose_level, urine_analysis
+      ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22, $23, $24, $25, $26, $27)
       RETURNING *`;
 
         const values = [
             data.user_id,
-            data.personal_info,
-            data.contact_info,
-            data.socioeco_data,
-            data.cultural_info,
+            data.full_name,
+            data.dob_age,
+            data.gender,
+            data.marital_status,
+            data.address,
+            data.phone_number,
+            data.email_address,
+            data.employment_status,
+            data.occupation,
+            data.education_level,
+            data.race_ethnicity,
+            data.nationality,
+            data.primary_language,
             data.health_status,
+            data.smoking_alcohol_drug_use,
+            data.physical_activity_level,
             data.heart_rate,
             data.blood_pressure,
             data.respiratory_rate,
